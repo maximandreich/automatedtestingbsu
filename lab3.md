@@ -5,7 +5,7 @@
 1.  Click "Ноутбуки" in navigation panel
 2.  Choose model
 3.  Click "ГДЕ КУПИТЬ"
-4.  Choose store where you can to buy it
+4.  Choose store where you can buy it
 
 **Expected Result:**
 Tab with choosen model in store we clicked
@@ -17,4 +17,4 @@ Tab with choosen model in store we clicked
 3.  Click "256G"
 
 **Expected Result:**
-List of laptop with 256gb
+List of laptops with 256gb
