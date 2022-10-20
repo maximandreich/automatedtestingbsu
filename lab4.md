@@ -1,9 +1,9 @@
-***Site -*** *https://www.hihonor.com/by/*
+***Site -*** *https://www.hihonor.com/global/*
 ##
 ## 1. Show models with 256gb SSD
 **Test steps:**
-1.  Click "Ноутбуки" in navigation panel
-2.  Click "Объем хранилища"
+1.  Click "Laptops" in navigation panel
+2.  Click "Storage"
 3.  Click "256G"
 
 **Expected Result:**
@@ -18,7 +18,7 @@ The filter clears
 ##
 ## 3. Changing the icon when choosing a color of laptop
 **Test steps:**
-1.  Click "Ноутбуки" in navigation panel
+1.  Click "Laptops" in navigation panel
 2.  Choose the model with different colors (will appear on hover)
 3.  Click different color
 
@@ -28,7 +28,7 @@ Icon should change
 ## 4. Navigation in information page of chosen device
 **Test steps:**
 1.  Open information page of device (For example HONOR Pad 8)
-2.  Scroll to "Основные характеристики" section
+2.  Scroll to "Top features" section
 3.  Click on cards
 
 **Expected Result:**
@@ -37,8 +37,9 @@ Card must move you to section you chose
 ## 5. Redirecting to shop where you can by product
 **Test steps:**
 1.  Choose product
-2.  Click "Где купить?"
-3.  Choose store in list of stores
+2.  Click "Buy"
+3.  Choose region
+4.  Choose store in list of stores
 
 
 | test-case | expected result |
