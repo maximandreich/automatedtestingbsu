@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 *Web-site:* [Fender](https://www.fender.com/en-US/start "Fender")
 
 ---
