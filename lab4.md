@@ -32,20 +32,6 @@ Opened cart page, one or more item(Guitar from test 1) in it
 | 1 | In list of Quantity change num 1 to 3 | In block your cart price has changed(Multiply by 3), In order summary subtotal changed by price of this product. |
 
 
-## 2. Change quantity of Product in cart
-
-
-***Preconditions:*** 
-
-Opened cart page, one or more item(Guitar from test 1) in it
-
-***Test steps:***
-
-| № |  Step Description   |  Expected Result  |
-|---|------------------------|-------------------|
-| 1 | In list of Quantity change num 1 to 3 | In block your cart price has changed(Multiply by 3), In order summary subtotal changed by price of this product. |
-
-
 ## 3. Edit product settings in cart
 
 
