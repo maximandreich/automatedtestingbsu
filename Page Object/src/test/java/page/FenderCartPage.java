@@ -21,7 +21,7 @@ public class FenderCartPage extends AbstractPage{
     @FindBy(xpath = "//*[@id=\"countryMisMatch\"]/div/div/div[3]/div[2]/table/tbody/tr/td[1]/div/a/img")
     private WebElement closeLocationWindow;
 
-    @FindBy(xpath = "/html/body/div[1]/header/nav/div/div/div/div[3]/div[3]/div[1]/a")
+    @FindBy(xpath = "//*[@id=\"mini-cart-content\"]/div/div[4]/div/a")
     private WebElement cartIcon;
 
     @FindBy(xpath = "//*[@id=\"btn-0110392800\"]/button")
@@ -40,7 +40,7 @@ public class FenderCartPage extends AbstractPage{
 
     public FenderCartPage goToCart() {
         new WebDriverWait(driver, Duration.ofSeconds(20))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[1]/header/nav/div/div/div/div[3]/div[3]/div[1]/a")));
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"mini-cart-content\"]/div/div[4]/div/a")));
         cartIcon.click();
         return this;
     }
