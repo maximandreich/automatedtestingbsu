@@ -32,14 +32,14 @@ public class FenderCartPage extends AbstractPage{
     }
 
     public FenderCartPage addItemToCart() {
-        new WebDriverWait(driver, Duration.ofSeconds(10))
+        new WebDriverWait(driver, Duration.ofSeconds(20))
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"btn-0110392800\"]/button")));
         addToCartButton.click();
         return this;
     }
 
     public FenderCartPage goToCart() throws InterruptedException {
-        new WebDriverWait(driver, Duration.ofSeconds(10))
+        new WebDriverWait(driver, Duration.ofSeconds(20))
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[1]/header/nav/div/div/div/div[3]/div[3]/div[1]/a")));
         Thread.sleep(1000);
         cartIcon.click();
@@ -51,7 +51,7 @@ public class FenderCartPage extends AbstractPage{
         valueString = valueString.replace("$", "");
         valueString = valueString.replace(",", "");
         Double valueBeforeChanging = Double.parseDouble(valueString);
-        new WebDriverWait(driver, Duration.ofSeconds(10))
+        new WebDriverWait(driver, Duration.ofSeconds(20))
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[1]/header/nav/div/div/div/div[3]/div[3]/div[1]/a")));
         Select quantitySelector = new Select(driver.findElement(By.xpath("/html/body/div[1]/div[3]/div[2]/div[2]/div[1]/div[4]/div/div/div[4]/div[3]/div/div/select")));
         quantitySelector.selectByVisibleText("2");
