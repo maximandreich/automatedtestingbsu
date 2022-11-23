@@ -9,6 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import page.FenderCartPage;
 import page.FenderItemPage;
 
 import java.time.Duration;
@@ -40,6 +41,16 @@ public class FenderTest {
                 .checkProductInCart()
                 .CorrectProductInCart();
         Assert.assertTrue(cartCheck);
+    }
+
+    @Test
+    public void changeQuantity() throws InterruptedException {
+        boolean equalityOfValues = new FenderCartPage(driver)
+                .openPage()
+                .addItemToCart()
+                .goToCart()
+                .changeQuantityAndCheckEquality();
+        Assert.assertTrue(equalityOfValues);
     }
 
     @AfterMethod(alwaysRun = true)
