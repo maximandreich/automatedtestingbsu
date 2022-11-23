@@ -27,41 +27,41 @@ public class FenderCartPage extends AbstractPage{
     @FindBy(xpath = "//*[@id=\"btn-0110392800\"]/button")
     private WebElement addToCartButton;
 
-    //@FindBy(xpath = "//*[@id=\"quantity\"]")
-    //private WebElement quantitySelector;
-
     public FenderCartPage(WebDriver driver) {
         super(driver);
     }
 
-    public FenderCartPage addItemToCart(){
+    public FenderCartPage addItemToCart() throws InterruptedException {
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"btn-0110392800\"]/button")));
+        Thread.sleep(1000);
         addToCartButton.click();
         return this;
     }
 
-    public FenderCartPage goToCart() throws InterruptedException {
+    public FenderCartPage goToCart() {
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[1]/header/nav/div/div/div/div[3]/div[3]/div[1]/a")));
         cartIcon.click();
-        Thread.sleep(5000);
         return this;
     }
 
-    public boolean changeQuantityAndCheckEquality() {
-        Double valueBeforeChanging = Double.parseDouble(driver.findElement(By.xpath("//*[@id=\"maincontent\"]/div[2]/div[2]/div[1]/div[4]/div/div/div[4]/div[1]/div/div[1]")).getText());
+    public boolean changeQuantityAndCheckEquality() throws InterruptedException {
+        String valueString = driver.findElement(By.xpath("//*[@id=\"maincontent\"]/div[2]/div[2]/div[1]/div[4]/div/div/div[4]/div[1]/div/div[1]")).getText();
+        valueString = valueString.replace("$", "");
+        valueString = valueString.replace(",", "");
+        Double valueBeforeChanging = Double.parseDouble(valueString);
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[1]/header/nav/div/div/div/div[3]/div[3]/div[1]/a")));
-        Select quantitySelector = new Select(driver.findElement(By.xpath("//*[@id=\\\"quantity\\\"]")));
+        Select quantitySelector = new Select(driver.findElement(By.xpath("/html/body/div[1]/div[3]/div[2]/div[2]/div[1]/div[4]/div/div/div[4]/div[3]/div/div/select")));
         quantitySelector.selectByVisibleText("2");
-        Double valueAfterChanging = Double.parseDouble(driver.findElement(By.xpath("//*[@id=\"maincontent\"]/div[2]/div[2]/div[1]/div[4]/div/div/div[4]/div[1]/div/div[1]")).getText());
+        Thread.sleep(1000);
+        valueString = driver.findElement(By.xpath("//*[@id=\"maincontent\"]/div[2]/div[2]/div[1]/div[4]/div/div/div[4]/div[1]/div/div[1]")).getText();
+        valueString = valueString.replace("$", "");
+        valueString = valueString.replace(",", "");
+        Double valueAfterChanging = Double.parseDouble(valueString);
         return valueAfterChanging.equals(valueBeforeChanging*2.0);
     }
-
-    /*public Double priceBeforeChange() {
-        return Double.parseDouble(driver.findElement(By.xpath("//*[@id=\"maincontent\"]/div[2]/div[2]/div[1]/div[4]/div/div/div[4]/div[1]/div/div[1]")).getText());
-    }*/
 
     @Override
     public FenderCartPage openPage(){
