@@ -36,13 +36,10 @@ public class FenderItemPage extends AbstractPage{
         super(driver);
     }
 
-    public /*WebElement*/ FenderItemPage addItemToCart(){
+    public FenderItemPage addItemToCart(){
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"btn-0110392800\"]/button")));
         addToCartButton.click();
-        /*WebElement cartWindow = new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.id("mini-cart-content")));
-        return cartWindow;*/
         return this;
     }
 
@@ -74,5 +71,3 @@ public class FenderItemPage extends AbstractPage{
         return this;
     }
 }
-
-// //*[@id="mini-cart-content"]/div/div[1]/div[2]/div/div/div/div[1]/div[2]/div[1]/div[1]/a
