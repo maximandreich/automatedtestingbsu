@@ -39,7 +39,7 @@ public class FenderTest {
                 .openPage()
                 .addItemToCart()
                 .checkProductInCart()
-                .CorrectProductInCart();
+                .checkCorrectProductInCart();
         Assert.assertTrue(cartCheck);
     }
 

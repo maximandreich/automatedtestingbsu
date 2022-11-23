@@ -54,7 +54,7 @@ public class FenderItemPage extends AbstractPage{
         return this;
     }
 
-    public boolean CorrectProductInCart() {
+    public boolean checkCorrectProductInCart() {
         return driver.getCurrentUrl().equals(FENDER_ITEM_PAGE_URL);
     }
 
