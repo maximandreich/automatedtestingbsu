@@ -38,15 +38,16 @@ public class FenderCartPage extends AbstractPage{
         return this;
     }
 
-    public FenderCartPage goToCart() throws InterruptedException {
+    public FenderCartPage goToCart() {
         new WebDriverWait(driver, Duration.ofSeconds(20))
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[1]/header/nav/div/div/div/div[3]/div[3]/div[1]/a")));
-        Thread.sleep(1000);
         cartIcon.click();
         return this;
     }
 
     public boolean changeQuantityAndCheckEquality() throws InterruptedException {
+        new WebDriverWait(driver, Duration.ofSeconds(20))
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"maincontent\"]/div[2]/div[2]/div[1]/div[4]/div/div/div[4]/div[1]/div/div[1]")));
         String valueString = driver.findElement(By.xpath("//*[@id=\"maincontent\"]/div[2]/div[2]/div[1]/div[4]/div/div/div[4]/div[1]/div/div[1]")).getText();
         valueString = valueString.replace("$", "");
         valueString = valueString.replace(",", "");
