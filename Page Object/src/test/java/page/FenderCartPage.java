@@ -16,7 +16,6 @@ public class FenderCartPage extends AbstractPage{
     @FindBy(id = "hs-eu-decline-button")
     private WebElement closeCookieWindowButton;
 
-
     @FindBy(xpath = "//*[@id='shopping-cart-table']/tbody/tr/td[1]/div/strong/a")
     private WebElement cartItemInfo;
 

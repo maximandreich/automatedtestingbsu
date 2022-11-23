@@ -34,10 +34,12 @@ public class FenderTest {
 
     @Test
     public void addItemToCart() throws InterruptedException {
-        WebElement cartWindow = new FenderItemPage(driver)
+        boolean cartCheck = new FenderItemPage(driver)
                 .openPage()
-                .addItemToCart();
-        Assert.assertNotNull(cartWindow);
+                .addItemToCart()
+                .checkProductInCart()
+                .CorrectProductInCart();
+        Assert.assertTrue(cartCheck);
     }
 
     @AfterMethod(alwaysRun = true)

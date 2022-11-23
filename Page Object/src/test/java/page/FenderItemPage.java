@@ -4,10 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import javax.swing.*;
 import java.time.Duration;
 
 public class FenderItemPage extends AbstractPage{
@@ -24,20 +26,39 @@ public class FenderItemPage extends AbstractPage{
     private WebElement addToCartButton;
 
     @FindBy(xpath = "/html/body/div[1]/header/nav/div/div/div/div[3]/div[3]/div[1]/a")
-    private WebElement goToCartButton;
+    private WebElement cartIcon;
+
+    @FindBy(xpath = "//*[@id=\"mini-cart-content\"]/div/div[1]/div[2]/div/div/div/div[1]/div[2]/div[1]/div[1]/a")
+    private WebElement productInCart;
 
 
     public FenderItemPage(WebDriver driver){
         super(driver);
     }
 
-    public WebElement addItemToCart(){
+    public /*WebElement*/ FenderItemPage addItemToCart(){
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"btn-0110392800\"]/button")));
         addToCartButton.click();
-        WebElement cartWindow = new WebDriverWait(driver, Duration.ofSeconds(10))
+        /*WebElement cartWindow = new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.id("mini-cart-content")));
-        return cartWindow;
+        return cartWindow;*/
+        return this;
+    }
+
+    public FenderItemPage checkProductInCart() {
+        Actions actions = new Actions(driver);
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[1]/header/nav/div/div/div/div[3]/div[3]/div[1]/a")));
+        actions.moveToElement(cartIcon);
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"mini-cart-content\"]/div/div[1]/div[2]/div/div/div/div[1]/div[2]/div[1]/div[1]/a")));
+        productInCart.click();
+        return this;
+    }
+
+    public boolean CorrectProductInCart() {
+        return driver.getCurrentUrl().equals(FENDER_ITEM_PAGE_URL);
     }
 
     @Override
@@ -51,8 +72,7 @@ public class FenderItemPage extends AbstractPage{
         WebElement shadowContent = shadowRoot.findElement(By.cssSelector("#focus-lock-id > div > div > div.sc-jJoQJp.dTzACB > div > div > div.sc-bBHxTw.hgPqkm > div > button:nth-child(3)"));
         shadowContent.click();
         return this;
-
-        // /html/body/div[11]//div/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/button[3]
-        //*[@id="focus-lock-id"]/div/div/div[2]/div/div/div[2]/div/button[3]
     }
 }
+
+// //*[@id="mini-cart-content"]/div/div[1]/div[2]/div/div/div/div[1]/div[2]/div[1]/div[1]/a
