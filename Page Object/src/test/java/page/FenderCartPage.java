@@ -31,17 +31,17 @@ public class FenderCartPage extends AbstractPage{
         super(driver);
     }
 
-    public FenderCartPage addItemToCart() throws InterruptedException {
+    public FenderCartPage addItemToCart() {
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"btn-0110392800\"]/button")));
-        Thread.sleep(1000);
         addToCartButton.click();
         return this;
     }
 
-    public FenderCartPage goToCart() {
+    public FenderCartPage goToCart() throws InterruptedException {
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[1]/header/nav/div/div/div/div[3]/div[3]/div[1]/a")));
+        Thread.sleep(1000);
         cartIcon.click();
         return this;
     }
