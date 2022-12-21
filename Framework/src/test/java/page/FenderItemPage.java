@@ -49,6 +49,7 @@ public class FenderItemPage extends AbstractPage {
     public FenderItemPage addItemToCart() {
         Waits.getWebElementUntilWait(driver, addToCart);
         addToCartButton.click();
+        logger.info("addItemToCart func " + Thread.currentThread().getId());
         return this;
     }
 
@@ -58,11 +59,13 @@ public class FenderItemPage extends AbstractPage {
         actions.moveToElement(cartIconButton);
         Waits.getWebElementUntilWait(driver, productInCart);
         productInCartButton.click();
+        logger.info("productInCartButton click " + Thread.currentThread().getId());
         return this;
     }
 
     public boolean checkCorrectProductInCart() {
         Item testItem = ItemCreator.withCredentialsFromProperty();
+        logger.info("checkCorrectProductInCart func " + Thread.currentThread().getId());
         return driver.getCurrentUrl().equals(testItem.getItemURL());
     }
 
@@ -76,6 +79,7 @@ public class FenderItemPage extends AbstractPage {
         SearchContext shadowRoot = shadowHost.getShadowRoot();
         WebElement shadowContent = shadowRoot.findElement(closeCookieWindow);
         shadowContent.click();
+        logger.info("openPage itemPage func " + Thread.currentThread().getId());
         return this;
     }
 }
